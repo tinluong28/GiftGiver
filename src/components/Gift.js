@@ -11,29 +11,36 @@ class Gift extends Component {
   }
   render() {
     return (
-      <div>
-        <Form>
-          <Form.Group>
-            <Form.Label>Person {this.props.gift.id}</Form.Label>
-            <Form.Control
-              className="person-input"
-              onChange={e => this.setState({ person: e.target.value })}
+      <div className="col-md-4 mb-3">
+        <form>
+          <div className="form-group">
+            <label>
+              <strong>Person #{this.props.gift.id}</strong>
+            </label>
+            <input
+              className="person-input form-control"
+              onChange={e =>
+                this.setState({ person: e.target.value.toUpperCase() })
+              }
             />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Gift</Form.Label>
-            <Form.Control
-              className="present-input"
+          </div>
+          <div className="form-group">
+            <label>
+              <strong>Gift</strong>
+            </label>
+            <input
+              className="present-input form-control"
               onChange={e => this.setState({ present: e.target.value })}
             />
-          </Form.Group>
-        </Form>
-        <Button
-          className="btn-remove"
+          </div>
+        </form>
+        <button
+          className="btn-remove btn btn-sm btn-danger mb-5"
           onClick={() => this.props.removeGift(this.props.gift.id)}
         >
-          Remove Gift
-        </Button>
+          Remove
+        </button>
+        <hr />
       </div>
     );
   }
